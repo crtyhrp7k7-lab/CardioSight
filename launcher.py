@@ -66,7 +66,8 @@ class ShuntSimulatorLauncher:
             ("run_rv_compliance.py", "RV Compliance Study", "Right-heart compliance effects (few min)"),
             ("run_scenarios.py", "Exercise & Disease Scenarios", "Exercise, PVD, volume retention (few min)"),
             ("run_reflex.py", "Reflex Mechanisms", "Cardiac vs volume arm gain sweep (few min)"),
-            ("run_echo_matrix.py", "Echo Matrix Analysis", "Match trial echocardiograms (few min)")
+            ("run_echo_matrix.py", "Echo Matrix Analysis", "Match trial echocardiograms (few min)"),
+            ("run_bat.py", "BAT + Shunt Combination", "Baroreflex activation therapy effects (~7 min)")
         ]
 
         row = 2
