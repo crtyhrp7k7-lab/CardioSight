@@ -36,6 +36,7 @@ Every `run_*.py` script takes the shunt diameter in mm as an optional argument
 | `run_scenarios.py` | Results 2, exercise, pulmonary vascular disease, volume retention | a few minutes |
 | `run_reflex.py` | Results 3, cardiac arm against volume arm (gain sweep) | a few minutes |
 | `run_echo_matrix.py` | Results 3, settings that match the trial echocardiograms; operating stiffness | a few minutes |
+| `run_bat.py` | Results 4, predicted effect of adding baroreflex activation therapy (assumed effect sizes) | about 7 minutes |
 
 `expected_output/` holds the printed output of each script for a 6 mm shunt, so
 you can compare your run with the numbers in the paper.
