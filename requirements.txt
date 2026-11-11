@@ -1,0 +1,4 @@
+# Core simulation has no dependencies (pure Python)
+# Optional: for GUI launcher and icon generation
+Pillow>=9.0.0
+pywin32>=300; sys_platform == 'win32'

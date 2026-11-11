@@ -1,0 +1,16 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "Interatrial shunt digital twins for HFrEF and HFpEF"
+type: software
+authors:
+  - family-names: Eskuri
+    given-names: Alan
+    affiliation: InterShunt Technologies
+license: MIT
+date-released: 2026-11-11
+abstract: >-
+  Closed-loop lumped-parameter cardiovascular model with an interatrial shunt,
+  two hand-tuned digital twins (HFrEF and HFpEF), and scenario scripts for
+  exercise, pulmonary vascular disease, volume retention and reflex arms.
+  Model design, code and simulations were produced with Claude (Anthropic)
+  under the author's direction.
