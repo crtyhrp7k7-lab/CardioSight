@@ -1,4 +1,5 @@
 # Core simulation has no dependencies (pure Python)
-# Optional: for GUI launcher and icon generation
+# Optional: for the GUI launcher (plots) and icon generation
+matplotlib>=3.5
 Pillow>=9.0.0
 pywin32>=300; sys_platform == 'win32'

@@ -1,0 +1,20 @@
+CardioSight Shunt Simulator - installation (Windows 10/11)
+=========================================================
+
+1. Right-click the zip file and choose "Extract All...". (Running install.bat from
+   inside the zip without extracting does not work.)
+2. Open the extracted folder and double-click  install.bat
+   - If Windows shows "Windows protected your PC", click "More info" -> "Run anyway".
+   - If Python is not installed, the installer tries to install it with winget.
+     If that is not possible it tells you to install it from python.org first.
+   - An internet connection is needed once, to download matplotlib (plots).
+   - No administrator rights are needed.
+3. Start "CardioSight Shunt Simulator" from the Desktop or the Start Menu.
+   After installing, the zip file and the extracted folder can be deleted.
+
+The app is installed in  %LOCALAPPDATA%\Programs\CardioSight Shunt Simulator
+To update, run install.bat from a newer zip. To remove it, run uninstall.bat in
+that folder.
+
+A scenario run takes about 40-90 seconds; the status line shows progress.
+See README.md for what the model does and its limitations.

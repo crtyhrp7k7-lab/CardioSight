@@ -5,3 +5,7 @@ results/
 *.ico
 *.lnk
 *.bat
+dist/
+.venv/
+!install.bat
+!uninstall.bat
