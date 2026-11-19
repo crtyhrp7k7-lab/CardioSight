@@ -7,8 +7,8 @@ from model import TWINS, simulate
 
 # (no shunt, 6 mm shunt) at rest
 EXPECTED = {
-    'HFrEF': dict(CO=(3.86, 3.49), PCWP=(22.7, 16.1), RAP=(9.1, 10.7), mPAP=(33.1, 29.3),
-                  LVEDV=(254, 237), LVEF=(19.5, 18.9), QpQs=(1.00, 1.40)),
+    'HFrEF': dict(CO=(4.14, 3.79), PCWP=(22.7, 16.2), RAP=(9.9, 11.4), mPAP=(33.9, 29.9),
+                  LVEDV=(195.4, 183.5), LVEF=(29.5, 28.7), QpQs=(1.00, 1.34)),
     'HFpEF': dict(CO=(4.78, 4.46), PCWP=(19.7, 13.7), RAP=(8.9, 10.2), mPAP=(30.6, 26.3),
                   LVEDV=(124, 117), LVEF=(55.3, 54.6), QpQs=(1.00, 1.24)),
 }

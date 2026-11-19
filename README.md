@@ -27,6 +27,35 @@ python run_acute.py 8          # same, 8 mm shunt
 Every `run_*.py` script takes the shunt diameter in mm as an optional argument
 (default 6), prints a table, and writes JSON to `results/`.
 
+## Desktop interface
+
+```
+python launcher.py             # needs matplotlib for the plots: pip install matplotlib
+```
+
+**Scenario builder** tab: tune one patient and compare a treated scenario against the
+same patient untreated (table of pressures, volumes, flows and coupling; LV, RV and atrial
+PV loops; LA/RA/PA pressure waveforms). Controls:
+
+- Patient: HFpEF or HFrEF twin, sinus rhythm or AF, rest or exercise (optionally with
+  pulmonary vascular disease), and multipliers on contractility, diastolic stiffness,
+  SVR, PVR, PA compliance, venous capacitance and stressed volume; pericardium and septal
+  interaction.
+- Interatrial shunt 0-10 mm, discharge coefficient, acute or chronic (reflex volume
+  retention and post-shunt PVR rise, with editable gain and PVR rise).
+- Mitral and tricuspid regurgitation: none/mild/moderate/severe, modeled as a fixed
+  effective regurgitant orifice area (MR 0.10/0.30/0.50 cm^2, TR 0.10/0.30/0.70 cm^2,
+  editable), optionally with chronic volume compensation. The resulting regurgitant
+  volume and fraction are reported with their guideline class.
+- Therapies: baroreflex activation (0-100%), sotatercept (0-100%, a PVR reduction of up
+  to 30%), pulmonary artery denervation (yes/no). Effect sizes are assumptions and are
+  editable in the panel.
+
+The same engine is available from Python as `scenario.run_scenario` (see `scenario.py`).
+A run takes about 40-90 s; the untreated patient is cached when only therapies change.
+
+**Paper scripts** tab: runs the `run_*.py` scripts below and shows their output.
+
 ## What each script reproduces
 
 | Script | Paper section | Run time |
@@ -37,6 +66,11 @@ Every `run_*.py` script takes the shunt diameter in mm as an optional argument
 | `run_reflex.py` | Results 3, cardiac arm against volume arm (gain sweep) | a few minutes |
 | `run_echo_matrix.py` | Results 3, settings that match the trial echocardiograms; operating stiffness | a few minutes |
 | `run_bat.py` | Results 4, predicted effect of adding baroreflex activation therapy (assumed effect sizes) | about 7 minutes |
+| `run_la_volume.py` | Results 3, left atrial volume: extra retention and ventricular interaction (run once per twin: `HFpEF`, `HFrEF`) | about 5 minutes |
+| `run_af.py` | Results 3, loss of atrial contraction and left atrial volume (run once per twin) | about 3 minutes |
+| `run_padn.py` | Extension: shunt with pulmonary artery denervation (PADN), assumed effect sizes (run once per twin) | about 3 minutes |
+| `run_triple.py` | Extension: shunt with BAT and PADN together (run once per twin) | about 4 minutes |
+| `run_coupling.py` | Extension: RV and LV ventriculo-arterial coupling (Ees/Ea) for the triple-therapy arms (run once per twin) | about 4 minutes |
 
 `expected_output/` holds the printed output of each script for a 6 mm shunt, so
 you can compare your run with the numbers in the paper.
@@ -50,7 +84,7 @@ integrator and the scenario helpers.
   `P = e(t)*Ees*(V-V0) + (1-e(t))*A*(exp(B*(V-V0))-1)`.
 - **Vessels.** Systemic arteries, systemic veins, pulmonary arteries and a
   pulmonary venous reservoir are linear capacitances joined by resistances.
-  Valves pass forward flow only.
+  Valves pass forward flow only, unless MR/TR is set (regurgitant orifice, `scenario.py`).
 - **Shunt.** Sharp-edged orifice, `Q = Cd*A*sqrt(2*|dP|/rho)`, `Cd = 0.7`,
   driven by the instantaneous LA-RA pressure difference.
 - **Pericardium (optional).** Exponential pressure that engages when total
@@ -83,10 +117,16 @@ ejection fractions) and the final state.
 
 ## Known limitations
 
-- Two hand-tuned twins. The HFrEF twin is more dilated and has a lower LVEF
-  than typical trial populations.
-- The ideal-orifice shunt probably overestimates flow for a real device of the
-  same nominal diameter. Calibrate `Cd` against bench or clinical data.
+- Two hand-tuned twins. The HFrEF twin matches the RELIEVE-HF baseline medians
+  for LVEF (about 29%) and LV end-diastolic volume only.
+- The shunt is a 6 mm sharp-edged orifice with `Cd` = 0.7 (effective area
+  19.8 mm^2). That equals a 5.1 mm lumen with `Cd` = 0.97, i.e. a Venturi-like
+  device. Calibrate `Cd` against bench or clinical data for a specific device.
+  Set the `SHUNT_CD` environment variable to change it for any script, e.g.
+  `SHUNT_CD=0.8 python run_triple.py HFpEF` (output in
+  `expected_output/run_triple_cd08.txt`).
+- `run_padn.py` and `run_triple.py` are not yet described in the paper. Their
+  BAT and PADN effect sizes are assumptions, so treat the output as predictions.
 - Reflex gains, the pulmonary vascular disease severity and arterial pressure
   as the sensed variable are assumptions.
 - Chamber properties are fixed: no remodeling. No septal interaction beyond a

@@ -1,33 +1,33 @@
 
 === HFrEF: no shunt vs 6 mm shunt (acute, rest) ===
                                              base    shunt   change
-Heart rate (bpm)                            78.00    78.00    +0.00
-Systemic output, Qs (L/min)                  3.86     3.49    -0.37
-Pulmonary flow, Qp (L/min)                   3.86     4.88    +1.02
-Qp:Qs                                        1.00     1.40    +0.40
-Shunt flow L->R (L/min)                      0.00     1.39    +1.39
-Mean LA-RA gradient (mmHg)                  13.63     5.48    -8.15
-Mean LA pressure / PCWP (mmHg)              22.71    16.13    -6.58
-LA v-wave peak (mmHg)                       25.22    20.02    -5.20
-LVEDP (mmHg)                                24.65    19.65    -5.00
-Mean RA pressure (mmHg)                      9.08    10.65    +1.57
-PA systolic (mmHg)                          41.53    38.94    -2.59
-PA diastolic (mmHg)                         26.57    21.58    -4.99
-Mean PA pressure (mmHg)                     33.12    29.30    -3.82
-Pulm. venous reservoir pressure (mmHg)      23.48    17.11    -6.37
-Pulm. stressed volume (mL)                 284.20   218.44   -65.76
-Aortic systolic (mmHg)                     105.50    98.09    -7.40
-Aortic diastolic (mmHg)                     71.41    66.97    -4.44
-Mean arterial pressure (mmHg)               88.14    82.23    -5.91
-LVEDV (mL)                                 253.82   236.90   -16.92
-LVESV (mL)                                 204.39   192.14   -12.24
-LV stroke volume (mL)                       49.43    44.75    -4.68
-LVEF (%)                                    19.48    18.89    -0.58
-RVEDV (mL)                                 193.62   199.77    +6.15
-RV stroke volume (mL)                       49.43    62.52   +13.08
-RVEF (%)                                    25.53    31.29    +5.76
-LA max volume (mL)                         143.24   132.46   -10.78
-RA max volume (mL)                          90.26    95.06    +4.79
+Heart rate (bpm)                            72.00    72.00    +0.00
+Systemic output, Qs (L/min)                  4.14     3.79    -0.36
+Pulmonary flow, Qp (L/min)                   4.14     5.08    +0.94
+Qp:Qs                                        1.00     1.34    +0.34
+Shunt flow L->R (L/min)                      0.00     1.30    +1.30
+Mean LA-RA gradient (mmHg)                  12.85     4.82    -8.03
+Mean LA pressure / PCWP (mmHg)              22.73    16.20    -6.53
+LA v-wave peak (mmHg)                       25.70    20.38    -5.32
+LVEDP (mmHg)                                25.00    20.15    -4.85
+Mean RA pressure (mmHg)                      9.88    11.37    +1.50
+PA systolic (mmHg)                          43.94    41.16    -2.78
+PA diastolic (mmHg)                         26.48    21.35    -5.13
+Mean PA pressure (mmHg)                     33.91    29.92    -3.99
+Pulm. venous reservoir pressure (mmHg)      23.56    17.21    -6.34
+Pulm. stressed volume (mL)                 286.61   220.74   -65.88
+Aortic systolic (mmHg)                     111.33   104.22    -7.11
+Aortic diastolic (mmHg)                     71.86    67.90    -3.96
+Mean arterial pressure (mmHg)               91.35    85.82    -5.53
+LVEDV (mL)                                 195.35   183.50   -11.85
+LVESV (mL)                                 137.80   130.91    -6.88
+LV stroke volume (mL)                       57.55    52.58    -4.96
+LVEF (%)                                    29.46    28.66    -0.80
+RVEDV (mL)                                 198.42   204.48    +6.06
+RV stroke volume (mL)                       57.55    70.61   +13.07
+RVEF (%)                                    29.00    34.53    +5.53
+LA max volume (mL)                         143.84   133.33   -10.52
+RA max volume (mL)                          92.63    96.84    +4.22
 
 === HFpEF: no shunt vs 6 mm shunt (acute, rest) ===
                                              base    shunt   change
