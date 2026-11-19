@@ -232,9 +232,19 @@ def simulate(p, shunt_mm=0.0, y0=None, dt=0.0005, block=40, maxblocks=8, tol=0.0
         Pperi=mean(lambda r: r[1]['peri']),
         Vheart=max(sum(r[0][:4]) for r in rec), SBV=p['SBV'])
     # Ventriculo-arterial coupling, Ees/Ea. Ees = the chamber's end-systolic elastance
-    # parameter; Ea = end-systolic pressure (at minimum volume) / stroke volume.
-    for ch, i, key in (('RV', 1, 'rv'), ('LV', 0, 'lv')):
-        k = min(range(len(rec)), key=lambda j: rec[j][0][i])
+    # parameter; Ea = end-systolic pressure / stroke volume. End-systole is taken at
+    # end-ejection, not at minimum volume: with MR/TR the ventricle keeps emptying
+    # backwards through isovolumic relaxation, so minimum volume falls at a much lower
+    # pressure and Ea would be underestimated. End-ejection = the last sample of the
+    # forward outflow that contains peak ventricular pressure (walking forward from the
+    # peak), so a brief valve opening at end-diastole (low PA diastolic pressure) is ignored.
+    for ch, i, key, valve in (('RV', 1, 'rv', 'pvv'), ('LV', 0, 'lv', 'av')):
+        k = max(range(len(rec)), key=lambda j: rec[j][1][key])
+        if rec[k][2][valve] > 0:
+            while k + 1 < len(rec) and rec[k + 1][2][valve] > 0:
+                k += 1
+        else:  # no forward flow at peak pressure: fall back to minimum volume
+            k = min(range(len(rec)), key=lambda j: rec[j][0][i])
         Ea = rec[k][1][key] / m[ch + 'SV']
         m[ch + '_Ees'], m[ch + '_Ea'], m[ch + '_coupling'] = p[ch][0], Ea, p[ch][0] / Ea
     # Valve regurgitation per beat (mL) and regurgitant fraction of total stroke volume.
