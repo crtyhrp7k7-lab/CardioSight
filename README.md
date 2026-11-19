@@ -56,6 +56,19 @@ A run takes about 40-90 s; the untreated patient is cached when only therapies c
 
 **Paper scripts** tab: runs the `run_*.py` scripts below and shows their output.
 
+### Sharing the app (Windows)
+
+```
+python make_release.py         # writes dist/CardioSight-Shunt-Simulator-<date>-<commit>.zip
+```
+
+The recipient extracts the zip and double-clicks `install.bat` (instructions in
+`INSTALL.txt`). The installer needs no administrator rights. It copies the app to
+`%LOCALAPPDATA%\Programs\CardioSight Shunt Simulator` and finds Python 3.8+, installing it
+with winget if it is missing. It then creates a private `.venv` with matplotlib, runs
+`test_baseline.py`, and adds Desktop and Start Menu shortcuts. `uninstall.bat` in the
+install folder removes everything.
+
 ## What each script reproduces
 
 | Script | Paper section | Run time |
